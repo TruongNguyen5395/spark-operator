@@ -1,0 +1,17 @@
+apiVersion: skaffold/v2beta26
+kind: Config
+
+metadata:
+  name: spark-operator
+
+deploy:
+  helm:
+    releases:
+    - name: spark-operator
+      namespace: spark-operator
+      upgradeOnChange: true
+      remoteChart: spark-operator/spark-operator
+      valuesFiles:
+        - "spark-operator/values.yaml"
+          # imageStrategy:
+          # helm: {}
